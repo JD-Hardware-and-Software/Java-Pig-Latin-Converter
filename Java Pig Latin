@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class PigLatinTranslator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String sentence = scanner.nextLine();
+        scanner.close();
+
+        String[] words = sentence.split("\\s+");
+        for (String word : words) {
+            String pigLatin = "";
+            char firstChar = word.charAt(0);
+            if (isVowel(firstChar)) {
+                pigLatin = word + "ay";
+            } else {
+                pigLatin = word.substring(1) + firstChar + "ay";
+            }
+            System.out.print(pigLatin + " ");
+        }
+    }
+
+    public static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1;
+    }
+}
